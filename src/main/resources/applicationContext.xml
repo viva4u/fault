@@ -29,7 +29,7 @@
              如果Mapper.xml与Mapper.class不在同一个包下或者不同名，就必须使用配置mapperLocations指定mapper.xml的位置。
              此时spring是通过识别mapper.xml中的 <mapper namespace="com.fan.mapper.UserMapper"> namespace的值来确定对应的Mapper.class的。 -->
         <!--上述配置方式适用于eclipse，而在IDEA中配置时一定要配置如下属性，否则部署完成后在target中找不到mapper.xml(即mapper.class与mapper.xml映射失败)-->
-        <!--<property name="mapperLocations" value="classpath:mapper/*.xml" />-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml" />
     </bean>
 
     <!-- 代替了MapperFactoryBean创建映射器的方法，MapperScannerConfigurer将 会 查 找 类 路 径 下 的 映 射 器 并 自 动 将 它 们 创 建 成 MapperFactoryBean-->

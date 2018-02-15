@@ -17,7 +17,7 @@ public class loginController {
 	userService userService;*/
 	@Autowired
 	UserBasicService userBasicService;
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	public String main() {
 		return "main";
 	}
@@ -29,6 +29,10 @@ public class loginController {
             return "loginSuc";
         }else return "main";
     }
+    @RequestMapping("/Vue")
+	public String Vue(){
+		return "testVue";
+	}
 	/*@RequestMapping("/reg")
 	public String reg() {
 		return "reg";
