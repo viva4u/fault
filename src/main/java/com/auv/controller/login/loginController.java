@@ -6,6 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 //import com.viva4u.pojo.User;
 //import com.viva4u.service.userService;
@@ -26,12 +31,24 @@ public class loginController {
 	    System.out.println(name+":"+pwd);
         User user = userBasicService.getByName(name);
         if(user.getPassword().equals(pwd)){
-            return "loginSuc";
+//            return "loginSuc";
+			return "pageNation";
         }else return "main";
     }
     @RequestMapping("/Vue")
 	public String Vue(){
 		return "testVue";
+	}
+	@RequestMapping("/pageQuery")
+	@ResponseBody
+	public Map pageQuery(Integer pageSize, Integer pageNumber){
+		Map<String,Object> params = new HashMap<String, Object>();
+		System.out.println("pageSize:"+pageSize+",pageNumber:"+pageNumber);
+		System.out.println(params.size());
+		params.put("pageSize",pageSize);
+		params.put("pageNumber",(pageNumber-1)*pageSize);
+		System.out.println(params.size());
+		return userBasicService.pageQuery(params);
 	}
 	/*@RequestMapping("/reg")
 	public String reg() {

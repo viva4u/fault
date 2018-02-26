@@ -3,10 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/test.js"></script>
+
+    <script>
+        window.onload = function () {
+            var oT = document.getElementById('t');
+            oT.onclick = test;
+            var vm = new Vue(
+                {
+                    el:'#test',
+                    methods:{
+                        greet:function () {
+                            alert("greet");
+                        },
+                        say:function (msg) {
+                            alert(msg);
+                        }
+                    }
+                }
+            );
+        }
+    </script>
 </head>
 <body>
-    <p>
-        
-    </p>
+    <div id="test">
+        <p>
+            <button @click="greet">greet</button>
+        </p>
+        <p>
+            <button @click="say('hi')">hi</button>
+        </p>
+    </div>
+    <input id="t" type="button" value="test"/>
 </body>
 </html>

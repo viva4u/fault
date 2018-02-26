@@ -6,4 +6,10 @@
     <select id="getByName" parameterType="string" resultType="User">
         SELECT * FROM USER WHERE NAME = #{name}
     </select>
+    <select id="pageQuery" parameterType="Map" resultType="List">
+        SELECT * FROM USER
+        <if test="pageNumber!=null">
+            LIMIT #{pageNumber},#{pageSize}
+        </if>
+    </select>
 </mapper>
