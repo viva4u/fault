@@ -50,6 +50,16 @@ public class loginController {
 		System.out.println(params.size());
 		return userBasicService.pageQuery(params);
 	}
+	@RequestMapping("/checkName")
+    @ResponseBody
+    public Map<String,Object> checkName(String uname){
+	    System.out.println("name:"+uname);
+        Map<String,Object> result = new HashMap<String, Object>();
+        if(userBasicService.checkName(uname)!=null){
+            result.put("flag",true);
+        }else result.put("flag",false);
+        return result;
+    }
 	/*@RequestMapping("/reg")
 	public String reg() {
 		return "reg";
